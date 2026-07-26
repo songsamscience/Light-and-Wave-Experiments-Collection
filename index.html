@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>송쌤과학 가상실험실 모음 · 빛과 파동</title>
-<meta name="description" content="2022 개정 교육과정 중학교 2학년 과학 '빛과 파동' 단원 가상실험실 6개 모음. 빛의 반사와 굴절, 평면거울, 거울과 렌즈, 시력 교정, 물체의 색, 영상 장치의 색 표현 · 송쌤과학">
+<meta name="description" content="2022 개정 교육과정 중학교 2학년 과학 '빛과 파동' 단원 가상실험실 8개 모음. 빛의 반사와 굴절, 평면거울, 거울과 렌즈, 시력 교정, 물체의 색, 영상 장치의 색 표현, 파동의 발생과 전달, 소리의 3요소 · 송쌤과학">
 <meta name="author" content="송쌤과학">
 <meta name="theme-color" content="#070a14">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="송쌤과학">
 <meta property="og:title" content="송쌤과학 가상실험실 모음 · 빛과 파동">
-<meta property="og:description" content="중2 과학 '빛과 파동' 단원 가상실험실 6개를 한곳에서. 브라우저에서 바로 실행됩니다.">
+<meta property="og:description" content="중2 과학 '빛과 파동' 단원 가상실험실 8개를 한곳에서. 브라우저에서 바로 실행됩니다.">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070a14'/%3E%3Cpath d='M16 6 L26 26 L6 26 Z' fill='none' stroke='%237f8fc0' stroke-width='2'/%3E%3Cpath d='M2 13 L12 15' stroke='white' stroke-width='2'/%3E%3Cpath d='M21 17 L31 21' stroke='%23ff4d5e' stroke-width='2'/%3E%3Cpath d='M21 17 L30 25' stroke='%2343dd8b' stroke-width='2'/%3E%3Cpath d='M21 17 L27 29' stroke='%235a86ff' stroke-width='2'/%3E%3C/svg%3E">
@@ -39,6 +39,7 @@
     --cyan:#3fd8ea;
     --blue:#6a90ff;
     --violet:#b189ff;
+    --pink:#ff7ab8;
 
     --spectrum:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--violet));
 
@@ -196,6 +197,7 @@
 
   /* ---------- EXPERIMENTS ---------- */
   .exp{padding:60px 0 40px}
+  .exp + .exp{padding-top:26px}
   .section-head{
     display:flex;align-items:baseline;justify-content:space-between;
     gap:16px;margin-bottom:30px;
@@ -296,19 +298,6 @@
   .card:hover .open{color:var(--accent,var(--cyan));gap:11px}
   .card:hover .open svg{transform:translateX(2px)}
 
-  /* 준비 중 카드 */
-  .card.soon{
-    background:none;
-    border-style:dashed;
-    border-color:var(--line-soft);
-    cursor:default;
-  }
-  .card.soon::before{display:none}
-  .card.soon:hover{transform:none;box-shadow:none;border-color:var(--line-soft)}
-  .card.soon h3{color:var(--text-dim)}
-  .card.soon .idx{color:var(--text-mute);border-style:dashed}
-  .card.soon .figure{border-style:dashed;background:rgba(255,255,255,.015);opacity:.7}
-
   /* 등장 효과 */
   .reveal{opacity:0;transform:translateY(14px)}
   .reveal.in{opacity:1;transform:none;transition:opacity .5s ease, transform .5s ease}
@@ -376,7 +365,7 @@
         <span class="brandline">송쌤과학</span>
         <span class="lead">가상실험실 모음</span>
       </h1>
-      <p class="tagline">빛이 나아가고, 반사되고, 굴절되는 순간을 직접 조작하며 관찰해 보세요. 카드를 누르면 실험이 새 창에서 열립니다.</p>
+      <p class="tagline">빛이 꺾이고 모이는 순간부터 소리가 파형으로 그려지는 순간까지, 직접 조작하며 관찰해 보세요. 카드를 누르면 실험이 새 창에서 열립니다.</p>
       <p class="note">설치할 프로그램 없이 브라우저에서 바로 실행됩니다. 디벗·태블릿에서도 동작합니다.</p>
 
       <div class="socials">
@@ -430,11 +419,18 @@
 <main class="wrap">
   <section class="exp">
     <div class="section-head">
-      <h2><span class="en">EXPERIMENTS</span> 실험 목록</h2>
-      <span class="count">실험 6개 · 수업 진행 순서</span>
+      <h2><span class="en">LIGHT</span> 빛</h2>
+      <span class="count" data-count="light">실험 6개</span>
     </div>
+    <ul class="grid" id="grid-light"></ul>
+  </section>
 
-    <ul class="grid" id="grid"></ul>
+  <section class="exp">
+    <div class="section-head">
+      <h2><span class="en">WAVES &amp; SOUND</span> 파동과 소리</h2>
+      <span class="count" data-count="wave">실험 2개</span>
+    </div>
+    <ul class="grid" id="grid-wave"></ul>
 
     <noscript>
       <div class="fallback">
@@ -445,6 +441,8 @@
         <a href="https://songsamscience.github.io/Myopia-and-Hyperopia-Lens-Correction/">4. 근시와 원시의 시력 교정</a>
         <a href="https://songsamscience.github.io/light-lab/">5. 물체의 색과 빛의 합성</a>
         <a href="https://songsamscience.github.io/Video-device-color/">6. 영상 장치의 색 표현</a>
+        <a href="https://songsamscience.github.io/Wave-Generation-and-Propagation/">7. 파동의 발생과 전달</a>
+        <a href="https://songsamscience.github.io/Sound-wave/">8. 소리의 3요소와 파형 분석</a>
       </div>
     </noscript>
   </section>
@@ -561,11 +559,22 @@
       <path class="fig-ray" d="M215 85 L232 102" stroke-width="3.4"/>
     </svg>`,
 
-    wave:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line class="fig-dash" x1="20" y1="55" x2="240" y2="55" stroke-width="1.3"/>
-      <line class="fig-dash" x1="50" y1="26" x2="50" y2="55" stroke-width="1.2"/>
-      <path d="M28 55 Q50 20 72 55 T116 55 T160 55 T204 55 T248 55"
-        fill="none" stroke="#8b96b8" stroke-opacity=".75" stroke-width="2.6" stroke-linecap="round"/>
+    wavegen:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="fig-dash" x1="20" y1="56" x2="240" y2="56" stroke-width="1.3"/>
+      <path class="fig-ray" d="M26 56 Q48 20 70 56 T114 56 T158 56 T202 56 T246 56" stroke-width="2.6"/>
+      <line class="fig-line" x1="180" y1="40" x2="180" y2="74" stroke-width="1.4" stroke-opacity=".55"/>
+      <path d="M180 34 L175 44 L185 44 Z" fill="#8b96b8" fill-opacity=".75"/>
+      <circle class="fig-fill" cx="180" cy="74" r="4.5"/>
+      <path class="fig-line" d="M92 100 L156 100" stroke-width="1.5" stroke-opacity=".55"/>
+      <path d="M168 100 L156 95 L156 105 Z" fill="#8b96b8" fill-opacity=".75"/>
+    </svg>`,
+
+    sound:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="fig-dash" x1="18" y1="55" x2="242" y2="55" stroke-width="1.3"/>
+      <line class="fig-dash" x1="108" y1="16" x2="108" y2="94" stroke-width="1.2"/>
+      <path class="fig-ray" d="M26 55 Q42 8 58 55 T90 55" stroke-width="2.6"/>
+      <line class="fig-line" x1="42" y1="32" x2="42" y2="55" stroke-width="1.4" stroke-opacity=".55"/>
+      <path class="fig-ray" d="M126 55 Q134 33 142 55 T158 55 T174 55 T190 55 T206 55 T222 55" stroke-width="2.4" stroke-opacity=".8"/>
     </svg>`
   };
 
@@ -577,6 +586,7 @@
       tags:["반사 법칙","굴절","각도 측정"],
       url:"https://songsamscience.github.io/Reflection-and-refraction-of-light/",
       date:"2026.6.13.",
+      group:"light",
       accent:"var(--red)",
       icon:"reflect"
     },
@@ -586,6 +596,7 @@
       tags:["허상","반사 경로"],
       url:"https://songsamscience.github.io/plane-mirror/",
       date:"2026.6.14.",
+      group:"light",
       accent:"var(--orange)",
       icon:"mirror"
     },
@@ -595,6 +606,7 @@
       tags:["거울","렌즈","실상·허상"],
       url:"https://songsamscience.github.io/Mirrors-and-Lenses-Experiment/",
       date:"2026.6.20.",
+      group:"light",
       accent:"var(--yellow)",
       icon:"lens"
     },
@@ -604,6 +616,7 @@
       tags:["눈의 구조","오목·볼록렌즈"],
       url:"https://songsamscience.github.io/Myopia-and-Hyperopia-Lens-Correction/",
       date:"2026.6.24.",
+      group:"light",
       accent:"var(--green)",
       icon:"eye"
     },
@@ -613,6 +626,7 @@
       tags:["빛의 삼원색","가산 혼합","색 그림자"],
       url:"https://songsamscience.github.io/light-lab/",
       date:"2026.7.5.",
+      group:"light",
       accent:"var(--cyan)",
       icon:"color"
     },
@@ -622,21 +636,41 @@
       tags:["화소","빛의 합성"],
       url:"https://songsamscience.github.io/Video-device-color/",
       date:"2026.7.10.",
-      accent:"var(--violet)",
+      group:"light",
+      accent:"var(--blue)",
       icon:"pixel"
+    },
+    {
+      title:"파동의 발생과 전달",
+      desc:"수면에 물결을 일으켜 진폭·파장·진동수를 조절하고, 용수철로 횡파와 종파를 만들어 비교합니다.",
+      tags:["파동의 3요소","횡파·종파","매질"],
+      url:"https://songsamscience.github.io/Wave-Generation-and-Propagation/",
+      date:"2026.7.22.",
+      group:"wave",
+      accent:"var(--violet)",
+      icon:"wavegen"
+    },
+    {
+      title:"소리의 3요소와 파형 분석",
+      desc:"악기 소리와 내 목소리를 파형으로 그려, 세기·높낮이·맵시가 파형의 어디에 나타나는지 찾습니다.",
+      tags:["소리의 3요소","진폭·진동수","파형"],
+      url:"https://songsamscience.github.io/Sound-wave/",
+      date:"2026.7.22.",
+      group:"wave",
+      accent:"var(--pink)",
+      icon:"sound"
     }
   ];
 
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
-  const grid = document.getElementById('grid');
-
-  grid.innerHTML = experiments.map((e,i)=>`
+  function cardHTML(e, n){
+    return `
     <li class="reveal">
       <a class="card" style="--accent:${e.accent}" href="${e.url}" target="_blank" rel="noopener"
          aria-label="${e.title} — 새 창에서 열기">
         <div class="card-top">
-          <span class="idx">${String(i+1).padStart(2,'0')}</span>
+          <span class="idx">${String(n).padStart(2,'0')}</span>
           <span class="date">공개 ${e.date}</span>
         </div>
         <div class="figure">${ICONS[e.icon] || ''}</div>
@@ -645,37 +679,35 @@
         <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
         <span class="open">실험 열기 ${arrow}</span>
       </a>
-    </li>
-  `).join('') + `
-    <li class="reveal">
-      <div class="card soon">
-        <div class="card-top">
-          <span class="idx">07</span>
-          <span class="date">준비 중</span>
-        </div>
-        <div class="figure">${ICONS.wave}</div>
-        <h3>소리와 파동</h3>
-        <p class="desc">소리의 세기·높낮이·맵시를 파형으로 관찰하는 실험을 준비하고 있습니다.</p>
-        <div class="tags"><span class="tag">파동</span><span class="tag">소리의 3요소</span></div>
-      </div>
     </li>`;
+  }
 
-  document.querySelector('.count').textContent = `실험 ${experiments.length}개 · 수업 진행 순서`;
+  /* 영역별로 나눠 그리고, 번호는 전체에서 이어집니다 */
+  let seq = 0;
+  ['light','wave'].forEach(g=>{
+    const list = experiments.filter(e=>e.group===g);
+    const grid = document.getElementById('grid-' + g);
+    if(!grid) return;
+    grid.innerHTML = list.map(e=>cardHTML(e, ++seq)).join('');
+    const label = document.querySelector(`[data-count="${g}"]`);
+    if(label) label.textContent = `실험 ${list.length}개`;
+  });
 
   /* 스크롤 진입 시 카드 순차 등장 (모션 최소화 설정 존중) */
+  const cards = document.querySelectorAll('.reveal');
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(!entry.isIntersecting) return;
-        const idx = [...grid.children].indexOf(entry.target);
+        const idx = [...entry.target.parentElement.children].indexOf(entry.target);
         entry.target.style.transitionDelay = `${Math.max(idx,0)*60}ms`;
         entry.target.classList.add('in');
         io.unobserve(entry.target);
       });
     }, {threshold:.15});
-    grid.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    cards.forEach(el=>io.observe(el));
   } else {
-    grid.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    cards.forEach(el=>el.classList.add('in'));
   }
 </script>
 </body>
