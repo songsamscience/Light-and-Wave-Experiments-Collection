@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>송쌤과학 가상실험실 모음 · 빛과 파동</title>
+<meta name="description" content="2022 개정 교육과정 중학교 2학년 과학 '빛과 파동' 단원 가상실험실 6개 모음. 빛의 반사와 굴절, 평면거울, 거울과 렌즈, 시력 교정, 물체의 색, 영상 장치의 색 표현 · 송쌤과학">
+<meta name="author" content="송쌤과학">
+<meta name="theme-color" content="#070a14">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="송쌤과학">
+<meta property="og:title" content="송쌤과학 가상실험실 모음 · 빛과 파동">
+<meta property="og:description" content="중2 과학 '빛과 파동' 단원 가상실험실 6개를 한곳에서. 브라우저에서 바로 실행됩니다.">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070a14'/%3E%3Cpath d='M16 6 L26 26 L6 26 Z' fill='none' stroke='%237f8fc0' stroke-width='2'/%3E%3Cpath d='M2 13 L12 15' stroke='white' stroke-width='2'/%3E%3Cpath d='M21 17 L31 21' stroke='%23ff4d5e' stroke-width='2'/%3E%3Cpath d='M21 17 L30 25' stroke='%2343dd8b' stroke-width='2'/%3E%3Cpath d='M21 17 L27 29' stroke='%235a86ff' stroke-width='2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root{
+    --ink:#070a14;
+    --ink-2:#0d1120;
+    --surface:#121828;
+    --line:#26304a;
+    --line-soft:#1b2338;
+    --text:#eef2fb;
+    --text-dim:#a6b0ca;
+    --text-mute:#7d86a2;
+
+    --red:#ff5c6b;
+    --orange:#ff9e46;
+    --yellow:#ffd54a;
+    --green:#4fe094;
+    --cyan:#3fd8ea;
+    --blue:#6a90ff;
+    --violet:#b189ff;
+
+    --spectrum:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--violet));
+
+    --sans:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 78% -8%, rgba(90,134,255,.16), transparent 60%),
+      radial-gradient(760px 480px at 6% 4%, rgba(168,119,255,.12), transparent 62%),
+      var(--ink);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.02fr .98fr;
+    gap:40px;
+    align-items:center;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    color:var(--text-dim);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;height:2px;border-radius:2px;
+    background:var(--spectrum);
+  }
+
+  h1{
+    font-weight:800;
+    letter-spacing:-.03em;
+    line-height:1.08;
+    font-size:clamp(33px,5.2vw,56px);
+  }
+  h1 .unit{
+    display:block;
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:clamp(14px,2.2vw,19px);
+    letter-spacing:.05em;
+    color:var(--cyan);
+    margin-bottom:14px;
+  }
+  h1 .lead{
+    display:block;
+    background:var(--spectrum);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  h1 .brandline{
+    display:block;
+    font-size:clamp(19px,2.8vw,27px);
+    font-weight:700;
+    color:var(--text);
+    letter-spacing:-.02em;
+    margin-bottom:5px;
+  }
+
+  .tagline{
+    max-width:36ch;
+    color:var(--text-dim);
+    font-size:16px;
+    margin-top:22px;
+  }
+  .note{
+    margin-top:12px;
+    font-size:13.5px;
+    color:var(--text-mute);
+  }
+
+  .socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .social{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:11px 18px 11px 15px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(255,255,255,.02);
+    font-size:14.5px;font-weight:600;
+    color:var(--text);
+    transition:border-color .2s, background .2s, transform .2s;
+  }
+  .social svg{width:18px;height:18px;flex:none}
+  .social .yt{color:var(--red)}
+  .social .ig{color:var(--violet)}
+  .social:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
+  .social.youtube:hover{border-color:var(--red)}
+  .social.instagram:hover{border-color:var(--violet)}
+
+  /* ---------- PRISM SIGNATURE ---------- */
+  .prism-stage{position:relative}
+  .prism-stage svg{width:100%;height:auto;display:block;filter:drop-shadow(0 20px 60px rgba(0,0,0,.5))}
+
+  .beam,.inner,.ray{fill:none;stroke-linecap:round}
+  .beam,.inner{stroke:#ffffff}
+  .beam{stroke-width:2.4}
+  .inner{stroke-width:2.2;stroke-opacity:.85}
+  .ray{stroke-width:2.6}
+
+  .beam{stroke-dasharray:240;stroke-dashoffset:240;animation:draw .8s ease forwards}
+  .inner{stroke-dasharray:90;stroke-dashoffset:90;animation:draw .35s ease .8s forwards}
+  .ray{stroke-dasharray:310;stroke-dashoffset:310;opacity:0;animation:fan .9s ease forwards}
+  .ray:nth-of-type(1){animation-delay:1.12s}
+  .ray:nth-of-type(2){animation-delay:1.19s}
+  .ray:nth-of-type(3){animation-delay:1.26s}
+  .ray:nth-of-type(4){animation-delay:1.33s}
+  .ray:nth-of-type(5){animation-delay:1.40s}
+  .ray:nth-of-type(6){animation-delay:1.47s}
+  .ray:nth-of-type(7){animation-delay:1.54s}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fan{0%{opacity:0}20%{opacity:1}to{stroke-dashoffset:0;opacity:.95}}
+
+  .caption{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--text-mute);
+    text-align:center;
+    margin-top:6px;
+  }
+
+  /* ---------- EXPERIMENTS ---------- */
+  .exp{padding:60px 0 40px}
+  .section-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:16px;margin-bottom:30px;
+    border-bottom:1px solid var(--line-soft);padding-bottom:16px;
+  }
+  .section-head h2{
+    font-size:20px;font-weight:700;letter-spacing:-.01em;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-head h2 .en{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.18em;color:var(--text-mute);
+  }
+  .count{font-family:var(--mono);font-size:13px;color:var(--text-dim)}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+
+  .card{
+    position:relative;
+    display:flex;flex-direction:column;height:100%;
+    padding:22px 22px 20px;
+    background:linear-gradient(180deg,var(--surface),var(--ink-2));
+    border:1px solid var(--line-soft);
+    border-radius:16px;
+    overflow:hidden;
+    transition:border-color .22s, transform .22s, box-shadow .22s;
+  }
+  .card::before{
+    content:"";
+    position:absolute;left:0;top:0;right:0;height:3px;
+    background:var(--accent,var(--cyan));
+    opacity:.6;
+    transition:opacity .22s;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--accent,var(--line));
+    box-shadow:0 18px 44px rgba(3,6,16,.6);
+  }
+  .card:hover::before{opacity:1}
+
+  /* 실험 개념도 패널 */
+  .figure{
+    height:112px;
+    margin-bottom:16px;
+    border-radius:12px;
+    border:1px solid var(--line-soft);
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .figure svg{width:100%;height:100%;display:block}
+  .fig-line{stroke:#8b96b8;stroke-opacity:.65;fill:none}
+  .fig-dash{stroke:#8b96b8;stroke-opacity:.4;fill:none;stroke-dasharray:4 4}
+  .fig-ray{stroke:var(--accent,var(--cyan));fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .fig-fill{fill:var(--accent,var(--cyan))}
+  .fig-label{font-family:var(--mono);font-size:11px;fill:#8b96b8;fill-opacity:.85}
+
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .idx{
+    font-family:var(--mono);font-weight:700;font-size:15px;
+    color:var(--accent,var(--text));
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:10px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.02);
+  }
+  .date{font-family:var(--mono);font-size:12px;color:var(--text-mute);letter-spacing:.02em}
+
+  .card h3{
+    font-size:18.5px;font-weight:700;letter-spacing:-.015em;
+    line-height:1.35;color:var(--text);
+    margin-bottom:10px;
+  }
+  .desc{
+    font-size:14px;color:var(--text-dim);line-height:1.62;
+    margin-bottom:16px;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:auto}
+  .tag{
+    font-size:11.5px;font-weight:600;letter-spacing:.01em;
+    color:var(--text-dim);
+    padding:4px 9px;border-radius:999px;
+    border:1px solid var(--line-soft);
+    background:rgba(255,255,255,.025);
+  }
+  .open{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:20px;
+    font-size:13.5px;font-weight:600;color:var(--text-dim);
+    transition:color .2s,gap .2s;
+  }
+  .open svg{width:15px;height:15px;transition:transform .2s}
+  .card:hover .open{color:var(--accent,var(--cyan));gap:11px}
+  .card:hover .open svg{transform:translateX(2px)}
+
+  /* 준비 중 카드 */
+  .card.soon{
+    background:none;
+    border-style:dashed;
+    border-color:var(--line-soft);
+    cursor:default;
+  }
+  .card.soon::before{display:none}
+  .card.soon:hover{transform:none;box-shadow:none;border-color:var(--line-soft)}
+  .card.soon h3{color:var(--text-dim)}
+  .card.soon .idx{color:var(--text-mute);border-style:dashed}
+  .card.soon .figure{border-style:dashed;background:rgba(255,255,255,.015);opacity:.7}
+
+  /* 등장 효과 */
+  .reveal{opacity:0;transform:translateY(14px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .5s ease, transform .5s ease}
+
+  .fallback{margin-top:18px;display:grid;gap:10px}
+  .fallback a{color:var(--cyan);text-decoration:underline}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:38px 0 56px;
+    margin-top:20px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:24px 40px;align-items:center;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .dot{width:30px;height:30px;border-radius:8px;background:var(--spectrum);flex:none}
+  .brand strong{font-size:16px;font-weight:800;letter-spacing:-.01em;display:block}
+  .brand span{font-family:var(--mono);font-size:11px;color:var(--text-mute);letter-spacing:.14em;display:block}
+  .copyright{font-size:13px;color:var(--text-mute);line-height:1.7}
+  .copyright strong{color:var(--text-dim);font-weight:600}
+  .copyright a{color:var(--text-dim);text-decoration:underline;text-underline-offset:3px}
+  .foot-socials{display:flex;gap:14px}
+  .foot-socials a{color:var(--text-mute);transition:color .2s}
+  .foot-socials a svg{width:20px;height:20px;display:block}
+  .foot-socials a.yt:hover{color:var(--red)}
+  .foot-socials a.ig:hover{color:var(--violet)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero{padding:60px 0 52px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .prism-stage{max-width:460px;width:100%}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr;gap:20px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 18px}
+    .hero{padding:48px 0 44px}
+    .exp{padding:44px 0 28px}
+    .grid{grid-template-columns:1fr}
+    .section-head{flex-direction:column;align-items:flex-start;gap:6px}
+    .tagline{max-width:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .beam,.inner,.ray{animation:none !important;stroke-dashoffset:0 !important;opacity:1 !important}
+    .reveal{opacity:1;transform:none}
+    .card,.social{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">2022 개정 교육과정 · 중학교 2학년 과학</span>
+      <h1>
+        <span class="unit">3단원 · 빛과 파동</span>
+        <span class="brandline">송쌤과학</span>
+        <span class="lead">가상실험실 모음</span>
+      </h1>
+      <p class="tagline">빛이 나아가고, 반사되고, 굴절되는 순간을 직접 조작하며 관찰해 보세요. 카드를 누르면 실험이 새 창에서 열립니다.</p>
+      <p class="note">설치할 프로그램 없이 브라우저에서 바로 실행됩니다. 디벗·태블릿에서도 동작합니다.</p>
+
+      <div class="socials">
+        <a class="social youtube" href="https://www.youtube.com/@songsamscience" target="_blank" rel="noopener">
+          <svg class="yt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+          유튜브
+        </a>
+        <a class="social instagram" href="https://www.instagram.com/songsamscience/" target="_blank" rel="noopener">
+          <svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+          인스타그램
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="prism-stage">
+        <!-- 삼각 프리즘 분산: 입사 → 좌면 굴절 → 내부 진행 → 우면 굴절 → 분산 (빨강이 가장 적게, 보라가 가장 크게 꺾임) -->
+        <svg viewBox="0 0 620 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="흰색 빛이 삼각 프리즘을 지나며 빨강부터 보라까지 무지개 색으로 나뉘는 그림">
+          <defs>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5a86ff" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#a877ff" stop-opacity=".10"/>
+            </linearGradient>
+          </defs>
+
+          <!-- 입사한 흰색 빛 -->
+          <path class="beam" d="M14 124 L236 169"/>
+
+          <!-- 프리즘 -->
+          <polygon points="270,70 204,260 344,260" fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="7"/>
+          <polygon points="270,70 204,260 344,260" fill="url(#glass)" stroke="#7f8fc0" stroke-opacity=".45" stroke-width="2"/>
+
+          <!-- 프리즘 내부를 지나는 빛 -->
+          <path class="inner" d="M236 169 L316 189"/>
+
+          <!-- 분산된 스펙트럼 -->
+          <path class="ray" d="M316 189 L568 352" stroke="var(--red)"/>
+          <path class="ray" d="M316 189 L562 361" stroke="var(--orange)"/>
+          <path class="ray" d="M316 189 L556 370" stroke="var(--yellow)"/>
+          <path class="ray" d="M316 189 L549 378" stroke="var(--green)"/>
+          <path class="ray" d="M316 189 L542 386" stroke="var(--cyan)"/>
+          <path class="ray" d="M316 189 L535 394" stroke="var(--blue)"/>
+          <path class="ray" d="M316 189 L528 401" stroke="var(--violet)"/>
+        </svg>
+      </div>
+      <p class="caption">빛의 분산 — 파장이 짧을수록 크게 굴절</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="exp">
+    <div class="section-head">
+      <h2><span class="en">EXPERIMENTS</span> 실험 목록</h2>
+      <span class="count">실험 6개 · 수업 진행 순서</span>
+    </div>
+
+    <ul class="grid" id="grid"></ul>
+
+    <noscript>
+      <div class="fallback">
+        <p>자바스크립트가 꺼져 있어 목록을 표시하지 못했습니다. 아래 링크로 바로 이동하세요.</p>
+        <a href="https://songsamscience.github.io/Reflection-and-refraction-of-light/">1. 빛의 반사와 굴절</a>
+        <a href="https://songsamscience.github.io/plane-mirror/">2. 평면거울에 나타나는 상</a>
+        <a href="https://songsamscience.github.io/Mirrors-and-Lenses-Experiment/">3. 거울과 렌즈에 의한 빛의 경로와 상</a>
+        <a href="https://songsamscience.github.io/Myopia-and-Hyperopia-Lens-Correction/">4. 근시와 원시의 시력 교정</a>
+        <a href="https://songsamscience.github.io/light-lab/">5. 물체의 색과 빛의 합성</a>
+        <a href="https://songsamscience.github.io/Video-device-color/">6. 영상 장치의 색 표현</a>
+      </div>
+    </noscript>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <strong>송쌤과학</strong>
+        <span>SONGSAM SCIENCE</span>
+      </div>
+    </div>
+
+    <p class="copyright">
+      <strong>© 2026 송쌤과학. All rights reserved.</strong><br>
+      본 자료의 저작권은 송쌤과학에 있으며, 무단 복제 및 배포를 금합니다.
+      <a href="https://litt.ly/songsamscience" target="_blank" rel="noopener">송쌤과학 전체 자료 보기</a>
+    </p>
+
+    <div class="foot-socials">
+      <a class="yt" href="https://www.youtube.com/@songsamscience" target="_blank" rel="noopener" aria-label="송쌤과학 유튜브">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+      </a>
+      <a class="ig" href="https://www.instagram.com/songsamscience/" target="_blank" rel="noopener" aria-label="송쌤과학 인스타그램">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* 실험별 개념도 — 광선은 카드 색(--accent), 기구는 중성색 */
+  const ICONS = {
+    reflect:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="18" y="62" width="224" height="34" rx="3" fill="#5a86ff" fill-opacity=".13"/>
+      <line class="fig-line" x1="18" y1="62" x2="242" y2="62" stroke-width="1.8"/>
+      <line class="fig-dash" x1="130" y1="14" x2="130" y2="100" stroke-width="1.4"/>
+      <path class="fig-ray" d="M62 20 L130 62" stroke-width="2.4"/>
+      <path class="fig-fill" d="M113 51.5 L102.4 49.6 L106.6 42.8 Z"/>
+      <path class="fig-ray" d="M130 62 L198 20" stroke-width="2.4" stroke-opacity=".85"/>
+      <path class="fig-fill" d="M198 20 L191.6 28.7 L187.4 21.9 Z" fill-opacity=".85"/>
+      <path class="fig-ray" d="M130 62 L158 96" stroke-width="2.4" stroke-opacity=".85"/>
+      <path class="fig-fill" d="M158 96 L148.5 90.8 L154.7 85.8 Z" fill-opacity=".85"/>
+      <text class="fig-label" x="138" y="26">법선</text>
+    </svg>`,
+
+    mirror:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="fig-line" x1="130" y1="12" x2="130" y2="100" stroke-width="2.2"/>
+      <path class="fig-line" stroke-width="1.2" stroke-opacity=".4"
+        d="M130 18 l8 8 M130 30 l8 8 M130 42 l8 8 M130 54 l8 8 M130 66 l8 8 M130 78 l8 8 M130 90 l8 8"/>
+      <path class="fig-ray" d="M76 94 L76 48" stroke-width="2.6"/>
+      <path class="fig-fill" d="M76 38 L83 51 L69 51 Z"/>
+      <path class="fig-ray" d="M184 94 L184 48" stroke-width="2.2" stroke-opacity=".45" stroke-dasharray="5 4"/>
+      <path class="fig-fill" d="M184 38 L191 51 L177 51 Z" fill-opacity=".45"/>
+      <line class="fig-dash" x1="76" y1="38" x2="184" y2="38" stroke-width="1.2"/>
+      <line class="fig-dash" x1="76" y1="94" x2="184" y2="94" stroke-width="1.2"/>
+    </svg>`,
+
+    lens:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="fig-dash" x1="14" y1="55" x2="246" y2="55" stroke-width="1.3"/>
+      <path d="M130 14 C152 34 152 76 130 96 C108 76 108 34 130 14 Z"
+        fill="#5a86ff" fill-opacity=".16" stroke="#8b96b8" stroke-opacity=".6" stroke-width="1.7"/>
+      <path class="fig-ray" d="M22 30 L130 30 L206 55" stroke-width="2.3"/>
+      <path class="fig-ray" d="M22 55 L206 55" stroke-width="2.3" stroke-opacity=".8"/>
+      <path class="fig-ray" d="M22 80 L130 80 L206 55" stroke-width="2.3"/>
+      <circle class="fig-fill" cx="206" cy="55" r="4"/>
+      <text class="fig-label" x="206" y="76" text-anchor="middle">F</text>
+    </svg>`,
+
+    eye:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M96 24 C104 40 104 70 96 86 L118 86 C110 70 110 40 118 24 Z"
+        fill="#5a86ff" fill-opacity=".16" stroke="#8b96b8" stroke-opacity=".6" stroke-width="1.6"/>
+      <circle cx="176" cy="55" r="34" fill="#5a86ff" fill-opacity=".08" stroke="#8b96b8" stroke-opacity=".6" stroke-width="1.8"/>
+      <ellipse cx="152" cy="55" rx="6" ry="15" fill="#5a86ff" fill-opacity=".24" stroke="#8b96b8" stroke-opacity=".6" stroke-width="1.4"/>
+      <path class="fig-ray" d="M197 36 A28 28 0 0 1 197 74" stroke-width="3" stroke-opacity=".35"/>
+      <path class="fig-ray" d="M18 40 L107 40 L152 33 L204 55" stroke-width="2.3"/>
+      <path class="fig-ray" d="M18 70 L107 70 L152 77 L204 55" stroke-width="2.3"/>
+      <circle class="fig-fill" cx="204" cy="55" r="3.6"/>
+    </svg>`,
+
+    color:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g style="mix-blend-mode:screen">
+        <circle cx="112" cy="42" r="31" fill="#ff2f3d"/>
+        <circle cx="148" cy="42" r="31" fill="#12d96a"/>
+        <circle cx="130" cy="74" r="31" fill="#2f5cff"/>
+      </g>
+    </svg>`,
+
+    pixel:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><clipPath id="magClip"><circle cx="196" cy="66" r="27"/></clipPath></defs>
+      <rect x="30" y="14" width="150" height="80" rx="8" fill="#5a86ff" fill-opacity=".08" stroke="#8b96b8" stroke-opacity=".6" stroke-width="1.8"/>
+      <path class="fig-line" d="M105 94 L105 102 M86 102 L124 102" stroke-width="1.8"/>
+      <g opacity=".6">
+        <rect x="44" y="28" width="5" height="52" fill="#ff2f3d"/>
+        <rect x="58" y="28" width="5" height="52" fill="#12d96a"/>
+        <rect x="72" y="28" width="5" height="52" fill="#2f5cff"/>
+        <rect x="86" y="28" width="5" height="52" fill="#ff2f3d"/>
+        <rect x="100" y="28" width="5" height="52" fill="#12d96a"/>
+        <rect x="114" y="28" width="5" height="52" fill="#2f5cff"/>
+        <rect x="128" y="28" width="5" height="52" fill="#ff2f3d"/>
+        <rect x="142" y="28" width="5" height="52" fill="#12d96a"/>
+        <rect x="156" y="28" width="5" height="52" fill="#2f5cff"/>
+      </g>
+      <g clip-path="url(#magClip)">
+        <rect x="169" y="36" width="10" height="60" fill="#ff2f3d"/>
+        <rect x="182" y="36" width="10" height="60" fill="#12d96a"/>
+        <rect x="195" y="36" width="10" height="60" fill="#2f5cff"/>
+        <rect x="208" y="36" width="10" height="60" fill="#ff2f3d"/>
+        <rect x="221" y="36" width="10" height="60" fill="#12d96a"/>
+      </g>
+      <circle cx="196" cy="66" r="27" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
+      <path class="fig-ray" d="M215 85 L232 102" stroke-width="3.4"/>
+    </svg>`,
+
+    wave:`<svg viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="fig-dash" x1="20" y1="55" x2="240" y2="55" stroke-width="1.3"/>
+      <line class="fig-dash" x1="50" y1="26" x2="50" y2="55" stroke-width="1.2"/>
+      <path d="M28 55 Q50 20 72 55 T116 55 T160 55 T204 55 T248 55"
+        fill="none" stroke="#8b96b8" stroke-opacity=".75" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>`
+  };
+
+  /* 실험을 추가하려면 아래 배열에 한 줄만 넣으면 됩니다. */
+  const experiments = [
+    {
+      title:"빛의 반사와 굴절",
+      desc:"거울과 수조에 레이저를 쏘아 입사각·반사각·굴절각을 법선 기준으로 직접 측정합니다.",
+      tags:["반사 법칙","굴절","각도 측정"],
+      url:"https://songsamscience.github.io/Reflection-and-refraction-of-light/",
+      date:"2026.6.13.",
+      accent:"var(--red)",
+      icon:"reflect"
+    },
+    {
+      title:"평면거울에 나타나는 상",
+      desc:"물체·눈·거울을 드래그하며 반사 경로를 따라가고, 거울 뒤에 생기는 허상의 위치를 확인합니다.",
+      tags:["허상","반사 경로"],
+      url:"https://songsamscience.github.io/plane-mirror/",
+      date:"2026.6.14.",
+      accent:"var(--orange)",
+      icon:"mirror"
+    },
+    {
+      title:"거울과 렌즈에 의한 빛의 경로와 상",
+      desc:"거울과 렌즈에서 빛이 지나는 길을 그려 보고, 실상과 허상이 어떻게 달라지는지 비교합니다.",
+      tags:["거울","렌즈","실상·허상"],
+      url:"https://songsamscience.github.io/Mirrors-and-Lenses-Experiment/",
+      date:"2026.6.20.",
+      accent:"var(--yellow)",
+      icon:"lens"
+    },
+    {
+      title:"근시와 원시의 시력 교정",
+      desc:"눈 속 수정체와 망막을 기준으로 초점이 맺히는 자리를 보고, 오목·볼록렌즈의 교정 원리를 살펴봅니다.",
+      tags:["눈의 구조","오목·볼록렌즈"],
+      url:"https://songsamscience.github.io/Myopia-and-Hyperopia-Lens-Correction/",
+      date:"2026.6.24.",
+      accent:"var(--green)",
+      icon:"eye"
+    },
+    {
+      title:"물체의 색과 빛의 합성",
+      desc:"빨강·초록·파랑 전등을 켜고 끄며 물체가 그 색으로 보이는 까닭과 색 그림자가 생기는 까닭을 찾습니다.",
+      tags:["빛의 삼원색","가산 혼합","색 그림자"],
+      url:"https://songsamscience.github.io/light-lab/",
+      date:"2026.7.5.",
+      accent:"var(--cyan)",
+      icon:"color"
+    },
+    {
+      title:"영상 장치의 색 표현",
+      desc:"확대경으로 화면 속 화소를 들여다보고, 화소의 빛이 합성되어 여러 색이 만들어지는 과정을 확인합니다.",
+      tags:["화소","빛의 합성"],
+      url:"https://songsamscience.github.io/Video-device-color/",
+      date:"2026.7.10.",
+      accent:"var(--violet)",
+      icon:"pixel"
+    }
+  ];
+
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  const grid = document.getElementById('grid');
+
+  grid.innerHTML = experiments.map((e,i)=>`
+    <li class="reveal">
+      <a class="card" style="--accent:${e.accent}" href="${e.url}" target="_blank" rel="noopener"
+         aria-label="${e.title} — 새 창에서 열기">
+        <div class="card-top">
+          <span class="idx">${String(i+1).padStart(2,'0')}</span>
+          <span class="date">공개 ${e.date}</span>
+        </div>
+        <div class="figure">${ICONS[e.icon] || ''}</div>
+        <h3>${e.title}</h3>
+        <p class="desc">${e.desc}</p>
+        <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <span class="open">실험 열기 ${arrow}</span>
+      </a>
+    </li>
+  `).join('') + `
+    <li class="reveal">
+      <div class="card soon">
+        <div class="card-top">
+          <span class="idx">07</span>
+          <span class="date">준비 중</span>
+        </div>
+        <div class="figure">${ICONS.wave}</div>
+        <h3>소리와 파동</h3>
+        <p class="desc">소리의 세기·높낮이·맵시를 파형으로 관찰하는 실험을 준비하고 있습니다.</p>
+        <div class="tags"><span class="tag">파동</span><span class="tag">소리의 3요소</span></div>
+      </div>
+    </li>`;
+
+  document.querySelector('.count').textContent = `실험 ${experiments.length}개 · 수업 진행 순서`;
+
+  /* 스크롤 진입 시 카드 순차 등장 (모션 최소화 설정 존중) */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const idx = [...grid.children].indexOf(entry.target);
+        entry.target.style.transitionDelay = `${Math.max(idx,0)*60}ms`;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, {threshold:.15});
+    grid.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  } else {
+    grid.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
